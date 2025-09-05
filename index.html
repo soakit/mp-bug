@@ -8,12 +8,14 @@
       body {
         font-family: Arial, sans-serif;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         margin: 0;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
+        padding-bottom: env(safe-area-inset-bottom);
       }
       .container {
         text-align: center;
@@ -22,6 +24,10 @@
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
       h1 {
         font-size: 3rem;
@@ -32,6 +38,78 @@
         font-size: 1.2rem;
         opacity: 0.9;
       }
+
+      /* 底部导航栏样式 */
+      .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 12px 0;
+        padding-bottom: calc(12px + env(safe-area-inset-bottom));
+        z-index: 1000;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+        transition: all 0.3s ease;
+        padding: 8px 12px;
+        border-radius: 12px;
+        min-width: 60px;
+      }
+
+      .nav-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .nav-item.active {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .nav-icon {
+        font-size: 24px;
+        margin-bottom: 4px;
+      }
+
+      .nav-label {
+        font-size: 12px;
+        font-weight: 500;
+        opacity: 0.9;
+      }
+
+      /* 响应式设计 */
+      @media (max-width: 480px) {
+        .nav-container {
+          padding: 0 10px;
+        }
+        .nav-item {
+          min-width: 50px;
+          padding: 6px 8px;
+        }
+        .nav-icon {
+          font-size: 20px;
+        }
+        .nav-label {
+          font-size: 11px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -40,5 +118,31 @@
       <p>欢迎来到我的 GitHub Pages 页面</p>
       <p>Welcome to my GitHub Pages site</p>
     </div>
+
+    <!-- 底部导航栏 -->
+    <nav class="bottom-nav">
+      <div class="nav-container">
+        <a href="#home" class="nav-item active">
+          <div class="nav-icon">🏠</div>
+          <div class="nav-label">首页</div>
+        </a>
+        <a href="#about" class="nav-item">
+          <div class="nav-icon">👤</div>
+          <div class="nav-label">关于</div>
+        </a>
+        <a href="#projects" class="nav-item">
+          <div class="nav-icon">💼</div>
+          <div class="nav-label">项目</div>
+        </a>
+        <a href="#blog" class="nav-item">
+          <div class="nav-icon">📝</div>
+          <div class="nav-label">博客</div>
+        </a>
+        <a href="#contact" class="nav-item">
+          <div class="nav-icon">📧</div>
+          <div class="nav-label">联系</div>
+        </a>
+      </div>
+    </nav>
   </body>
 </html>
